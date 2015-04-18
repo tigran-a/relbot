@@ -83,7 +83,7 @@ other hosts with which it was periodically communicating. This is given for each
 * Detection parameters
 
 To detect the periodical connection, the timeline is split by the period intervals; and thus wrapped into two-dimentional array:
-![Connection events for a Zeus p2p infected hosts](https://github.com/tigran-a/todo/raw/master/src/common/images/zeus.png "Red dots are new flows [connections] between the two hosts")
+![Connection events for a Zeus p2p infected hosts](https://raw.githubusercontent.com/tigran-a/relbot/master/zeus.png "Red dots are new flows [connections] between the two hosts")
 
 Here X-axis is the time, and Y-axis is a wrapping "level": a point at (x,y) means that a new connection was established at time `y*period + x`. 
 
@@ -111,7 +111,7 @@ Here we say that if we don't have ~4 points on different levels for at least one
 Now, we caluclate the maximum value between  all unit-intervals (`maximum`), dispersion and a mean. 
 Then, if we have exactly one unit-interval with the value greater than `FREE_COEF + MAX_COEF*maximum + DISP_COEF*dispersion + MEAN_COEF*mean`, then we suppose we found a periodic connections. 
 It is done to ensure somehow, that it was not random connections for the unit inerval, but it's an outlier from other unit-intervals values.
-![Within lots of connections it's not always obvious whether the periodic connections are there](https://github.com/tigran-a/todo/raw/master/src/common/images/hidden.png "Red dots are new flows [connections] between the two hosts")
+![Within lots of connections it's not always obvious whether the periodic connections are there](https://raw.githubusercontent.com/tigran-a/relbot/master/hidden.png "Red dots are new flows [connections] between the two hosts")
 
 One an tweak the coefficients with 
 ```
