@@ -46,8 +46,8 @@ Also, the first and the last file to process are also specified there:
 
 ```
 NFCAPDDir=../../netflow/zeus
-FirstNFCAPDFile=nfcapd.201411181315
-LastNFCAPDFile=nfcapd.201411181330
+START=nfcapd.201411181315
+END=nfcapd.201411181330
 ```
 
 * Botnet types
