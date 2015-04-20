@@ -280,7 +280,7 @@ int main(int argc, char* argv[])
 		} else {
 		}
 		*/
-		cout << "Config file was set to " << config_file << "\n";
+		cerr << "Config file was set to " << config_file << "\n";
 	}
 	catch(std::exception& e) {
 		cerr << "error: " << e.what() << "\n";
