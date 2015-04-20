@@ -4,11 +4,6 @@ A tool that aims to detect infected hosts by analyzing NetFlow/IPFIX records.
 The algorithm is based on the fact that many p2p botnets use keep-alive messages
 to their neighbors that are sent with a fixed period.
 
-### What is this repository for? ###
-
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
 ### How do I get set up? ###
 
@@ -135,10 +130,33 @@ After all parameters confiugred, you can run the sample pipe:
 ./run.sh
 ```
 
-### Why? ###
+
+### Bidirectional flows ###
+
+Tool `bidirectional/netflowaggr.cpp` is amed to join two related flows into one, e.g., for host A and host B, 
+if we have flow A:10->B:20 and flow B:20->A:10 within a given time inerval, then it will output only A:10-> B:20 (assuming it appeared first).
+
+The default time interval is 2 minutes, and can be changed in the .cpp file: 
+
+```
+	#define TIME_WINDOW 120000
+```
+
+It appeared, that this aggregation is not necessary for the detection mechanism.
+
+
+## Why? ##
 
 * The work was done within [ACDC](http://acdc-project.eu) by [SnT](http://snt.uni.lu) ([University of Luxembourg](http://www.uni.lu)) 
 
-### Thanks ### 
+### Improvements ###
+
+Current algorithm simply counts the number of flows per UNIT, but it should be better to take into account that the host can be switched off 
+(look at the activity of ther flows) and if not, there should be no gaps between the levels. For example,  
+every 30 min a new flow should be established, but currently if we have a new flow in 1h30, the fact that there are two missing flows is ignored.
+
+Also, some small deviations from the fixed period are observed (e.g. 0.5 seconds for 30 min periods)
+
+## Thanks ## 
 
 Thanks go to [CIRCL](http://circl.lu) for 30Gb of NetFlow data and to [Christian Nordlohne](http://www.internet-sicherheit.de/wir-ueber-uns/team/mitarbeiter/mitarbeiter-detail/nordlohne/) from IF-IS for a sample of NetFlow data with known hosts infected by p2p Zeus. 
