@@ -1,0 +1,3 @@
+[submodule "PyACDC"]
+	path = PyACDC
+	url = https://github.com/tigran-a/PyACDC.git
