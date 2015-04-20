@@ -13,7 +13,7 @@ AGGR=bidirectional/netflowaggr-dummy
 
 if [ -z "$1" ]
 then
-	nfdump -q  -N  -R $NFCAPDDir/$FirstNFCAPDFile:$LastNFCAPDFile  -o "fmt:%ts %sa %sp %da %dp %byt"   | $AGGR | timedetector/timedetector --config timedetector/timedetector.conf
+	nfdump -6 -q  -N  -R $NFCAPDDir/$FirstNFCAPDFile:$LastNFCAPDFile  -o "fmt:%ts %sa %sp %da %dp %byt"   | $AGGR | timedetector/timedetector --config timedetector/timedetector.conf
 	exit 0
 fi
-	nfdump -q  -N  -R $NFCAPDDir/$FirstNFCAPDFile:$LastNFCAPDFile  -o "fmt:%ts %sa %sp %da %dp %byt" -c $1  | $AGGR | timedetector/timedetector
+	nfdump -6 -q  -N  -R $NFCAPDDir/$FirstNFCAPDFile:$LastNFCAPDFile  -o "fmt:%ts %sa %sp %da %dp %byt" -c $1  | $AGGR | timedetector/timedetector
