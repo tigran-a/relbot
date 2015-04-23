@@ -144,6 +144,66 @@ The default time interval is 2 minutes, and can be changed in the .cpp file:
 
 It appeared, that this aggregation is not necessary for the detection mechanism.
 
+## Submitting reports to CCH ##
+
+In order to submit a report to the ACDC's Central Clearing House, one must possess a CCH Write Key 
+(for the details, please, refer to [PyACDC, api v2 documentation](https://github.com/tigran-a/PyACDC).
+
+A script for submitting a report is provided in `acdcsubmitter.py`. 
+It takes as the input at stdin the output produced by relbot (see run.sh), for example: 
+
+```
+=============================
+103.169.223.139
+600000 -> 0
+900000 -> 4
+1800900 -> 0
+2400000 -> 0
+=============================
+103.169.68.96
+600000 -> 1
+900000 -> 0
+1800900 -> 0
+2400000 -> 0
+```
+
+and will look per each host, if for at least one time period, the index ( number going after -> ), 
+which is actually a number of hosts with whom the given one has periodic connections, 
+is at least MIN_IDX
+
+### Parameters ###
+
+`MIN_IDX` -- filters out all suspecious hosts for which the number of periodic connections are less than MIN_IDX.
+For the example abouve,  `MIN_IDX = 2` will skip reporting the second host, but will report the first one.
+
+#### Report parameters ####
+
+
+`IP_MODE="plain"`  The mode of the source IP. This can be plain for unaltered IPs, anon for anonymised IPs, or pseudo for pseudonymised IPs.
+
+
+`CONFIDENCE = 0.5`  The default confidence level (from 0.0 to 1.0) for the reports
+
+More parameters can be set direcly in the `build_report` funtion: 
+
+```def build_report(ip, confidence= CONFIDENCE , timestamp = None, version =1, ipmode = IP_MODE, reporttype="RelBot detected a suspecious host" ):```
+
+#### CCH parameters ####
+
+`KEY` is a CCH write key 
+
+`CCH_HOST =  "webservice.db.acdc-project.eu"` is a host where the CCH is running
+
+`CCH_PORT = 3000` is the corresponding port 
+
+
+### Analyze and submit ###
+
+A simple pipe to submit the found infections can be performed as:
+
+```
+./run.sh | ./acdcsubmitter.py
+```
 
 ## Why? ##
 

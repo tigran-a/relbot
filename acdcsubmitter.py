@@ -62,8 +62,14 @@ MIN_IDX = 1
 # default confidence level (from 0.0 to 1.0) for the reports
 CONFIDENCE = 0.5
 
-
+# CCH key
 KEY = "heregoesyourhexadecimalcchkey" 
+
+# CCH host
+CCH_HOST =  "webservice.db.acdc-project.eu"
+CCH_PORT = 3000
+
+# CCH Port
 
 """ END CONFIG """
 
@@ -120,7 +126,7 @@ def read_input():
 if __name__ == '__main__' : 
 
 
-    cch = CCHv2(apikey = KEY, host = "webservice.db.acdc-project.eu", port=3000)
+    cch = CCHv2(apikey = KEY, host = CCH_HOST , port= CCH_PORT)
     cnt = 0
     for ip in read_input(): 
         cnt+=1
