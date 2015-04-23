@@ -80,7 +80,7 @@ def build_report(ip, confidence= CONFIDENCE , timestamp = None, version =1, ipmo
     report["source_key"] = "ip"
     report["source_value"] = ip
     report["confidence_level"] = confidence 
-    report["version"] = version, 
+    report["version"] = version 
     report["report_subcategory"] =  "other"
     if ":" in ip:
         report["ip_version"] = 6
@@ -125,9 +125,12 @@ if __name__ == '__main__' :
     for ip in read_input(): 
         cnt+=1
         log.info("%d. Reporting ip %s", cnt, ip)
-        report = build_report(ip)
+        report = build_report(ip, reporttype="RelBot detected suspicious host activities")
         r =  cch.submit_report(report)
         log.info("Server replied: \n %s", json.dumps(r, indent=2))
 
 
 
+    print("Requesting again all reports for last 15 min; should see the submitted one")
+    r =  cch.get_reports()
+    print(json.dumps(r, indent= 2))
