@@ -4,6 +4,8 @@ A tool that aims to detect infected hosts by analyzing NetFlow/IPFIX records.
 The algorithm is based on the fact that many p2p botnets use keep-alive messages
 to their neighbors that are sent with a fixed period.
 
+It consists of a couple of components depicted on the scheme:
+![Tool chain](https://raw.githubusercontent.com/tigran-a/relbot/master/toolchain.png "Components involved into the project")
 
 ### How do I get set up? ###
 
@@ -11,18 +13,15 @@ to their neighbors that are sent with a fixed period.
 
 Here is what needs to be installed on a cloud Ubuntu 14.10 image
 to compile the project:
-
 ```
 sudo apt-get install make g++ 
 sudo apt-get install libboost1.54-dev
-
 ```
 
 Also you will need `nfdump` tool: 
 
 ```
 sudo apt-get install nfdump
-
 ```
 
 #### Compilation ####
@@ -33,7 +32,6 @@ Compile:
 
 ```
 make -C bidirectional && make -C timedetector
-
 ```
 
 #### Configuration ####
