@@ -15,7 +15,7 @@ Here is what needs to be installed on a cloud Ubuntu 14.10 image
 to compile the project:
 ```
 sudo apt-get install make g++ 
-sudo apt-get install libboost1.54-dev
+sudo apt-get install libboost1.54-dev libboost1.54
 ```
 
 Also you will need `nfdump` tool: 
