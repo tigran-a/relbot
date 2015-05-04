@@ -116,7 +116,7 @@ def read_input():
                     res = buf[0]  # since got one period for which teh index is acceptable, save the result 
                     break
             if res is not None: 
-                yield (res)
+                yield (res.strip())
             res = None
             buf=[]
         else: 
