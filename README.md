@@ -145,7 +145,7 @@ It appeared, that this aggregation is not necessary for the detection mechanism.
 ## Submitting reports to CCH ##
 
 In order to submit a report to the ACDC's Central Clearing House, one must possess a CCH Write Key 
-(for the details, please, refer to [PyACDC, api v2 documentation](https://github.com/tigran-a/PyACDC).
+(for the details, please, refer to [PyACDC, api v2 documentation](https://github.com/tigran-a/PyACDC)).
 
 A script for submitting a report is provided in `acdcsubmitter.py`. 
 It takes as the input at stdin the output produced by relbot (see run.sh), for example: 
