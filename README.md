@@ -101,7 +101,7 @@ We can prevent analysis for the hosts for which the maximal value cumullated per
 
 Here we say that if we don't have ~4 points on different levels for at least one interval, we don't do the analysis.
 
-Now, we caluclate the maximum value between  all unit-intervals (`maximum`), dispersion and a mean. 
+Now, we calculate the maximum value between  all unit-intervals (`maximum`), dispersion and a mean. 
 Then, if we have exactly one unit-interval with the value greater than `FREE_COEF + MAX_COEF*maximum + DISP_COEF*dispersion + MEAN_COEF*mean`, then we suppose we found a periodic connections. 
 It is done to ensure somehow, that it was not random connections for the unit inerval, but it's an outlier from other unit-intervals values.
 ![Within lots of connections it's not always obvious whether the periodic connections are there](https://raw.githubusercontent.com/tigran-a/relbot/master/hidden.png "Red dots are new flows [connections] between the two hosts")
